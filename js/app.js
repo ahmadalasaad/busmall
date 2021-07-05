@@ -115,20 +115,21 @@ function renderThreeImages() {
     console.log(leftIndex);
     console.log(rightIndex);
     console.log(midIndex);
-    while (leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
-        leftIndex = generateRandomIndex();
-        rightIndex = generateRandomIndex();
-    }
+    // while (leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
+    //     leftIndex = generateRandomIndex();
+    //     rightIndex = generateRandomIndex();
+    // }
     console.log("befor");
     let indexes = [leftIndex, rightIndex, midIndex];
     let pIndexes = [leftIndex1, rightIndex1, midIndex1];
 
     if (counter !== 0) {
         console.log("beforwh");
-        while (intersection(indexes, pIndexes).length !== 0) {
+        while (intersection(indexes, pIndexes).length !== 0 || leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
             console.log("inwh");
             leftIndex = generateRandomIndex();
             rightIndex = generateRandomIndex();
+            midIndex = generateRandomIndex();
             indexes = [leftIndex, rightIndex, midIndex];
         }
         // console.log(intersection(indexes, pIndexes));
