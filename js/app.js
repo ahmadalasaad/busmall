@@ -49,9 +49,7 @@ function handleClick(event) {
     // console.log(counter);
     if (maxAttempts >= counter) {
         //if (event.target.id === 'left-image' || event.target.id === 'right-image' || event.target.id === 'mid-image') {
-        Product.all[leftIndex].time++;
-        Product.all[rightIndex].time++;
-        Product.all[midIndex].time++;
+
         // }
         if (event.target.id === 'left-image') {
             Product.all[leftIndex].vote++;
@@ -62,6 +60,9 @@ function handleClick(event) {
         } else if (event.target.id === 'mid-image') {
             Product.all[midIndex].vote++;
             //  Product.all[midIndex].time++;
+        } else {
+            counter--;
+            return
         }
         renderThreeImages();
     } else {
@@ -105,7 +106,9 @@ function renderThreeImages() {
     leftImage.src = Product.all[leftIndex].source;
     rightImage.src = Product.all[rightIndex].source;
     midImage.src = Product.all[midIndex].source;
-
+    Product.all[leftIndex].time++;
+    Product.all[rightIndex].time++;
+    Product.all[midIndex].time++;
 }
 ////
 renderThreeImages();
