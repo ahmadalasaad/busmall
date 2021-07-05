@@ -96,7 +96,7 @@ function renderList() {
 
 let btn = document.getElementById('bt');
 btn.addEventListener('click', handCl);
-function handCl(event) {
+function handCl() {
     renderList();
     gettingChart();
 }
@@ -123,17 +123,22 @@ function renderThreeImages() {
     let indexes = [leftIndex, rightIndex, midIndex];
     let pIndexes = [leftIndex1, rightIndex1, midIndex1];
 
-    if (counter !== 0) {
-        console.log("beforwh");
-        while (intersection(indexes, pIndexes).length !== 0 || leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
-            console.log("inwh");
-            leftIndex = generateRandomIndex();
-            rightIndex = generateRandomIndex();
-            midIndex = generateRandomIndex();
-            indexes = [leftIndex, rightIndex, midIndex];
-        }
+    // if (counter !== 0) {
+    console.log("beforwh");
+    while (intersection(indexes, pIndexes).length !== 0 || leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
+        console.log("inwh");
+        leftIndex = generateRandomIndex();
+        rightIndex = generateRandomIndex();
+        midIndex = generateRandomIndex();
+        indexes = [leftIndex, rightIndex, midIndex];
+        // }
         // console.log(intersection(indexes, pIndexes));
     }
+
+    // while (leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
+    //     leftIndex = generateRandomIndex();
+    //     rightIndex = generateRandomIndex();
+    // }
     console.log('after if');
     leftImage.src = Product.all[leftIndex].source;
     rightImage.src = Product.all[rightIndex].source;
@@ -144,6 +149,8 @@ function renderThreeImages() {
     Product.all[rightIndex].time++;
     Product.all[midIndex].time++;
 }
+
+
 renderThreeImages();
 
 function generateRandomIndex() {
