@@ -1,3 +1,4 @@
+'use strict';
 const parent = document.getElementById('sec-one');
 const rightImage = document.getElementById('right-image');
 const leftImage = document.getElementById('left-image');
@@ -5,7 +6,6 @@ const midImage = document.getElementById('mid-image');
 
 const maxAttempts = 25;
 let counter = 0;
-
 let allName = [];
 let allVote = [];
 let allShown = [];
@@ -48,7 +48,7 @@ let leftIndex1;
 let rightIndex1;
 let midIndex1;
 parent.addEventListener('click', handleClick);
-
+let btn;
 function handleClick(event) {
     counter++;
 
@@ -72,6 +72,10 @@ function handleClick(event) {
 
         renderThreeImages();
     } else {
+        btn = document.getElementById('bt');
+        saveToLs();
+
+        btn.addEventListener('click', handCl);
         parent.removeEventListener('click', handleClick);
     }
 
@@ -79,26 +83,29 @@ function handleClick(event) {
 
 
 }
-
+let li;
 function renderList() {
     const ul = document.getElementById('unList');
     for (let i = 0; i < Product.all.length; i++) {
 
         allVote.push(Product.all[i].vote);
         allShown.push(Product.all[i].time);
-        let li = document.createElement('li');
+        li = document.createElement('li');
         ul.appendChild(li);
         li.textContent = `${Product.all[i].name} has this number of votes ${Product.all[i].vote} and shown ${Product.all[i].time} times`
+        // console.log(li);
     }
     btn.removeEventListener('click', handCl);
 }
 
 
-let btn = document.getElementById('bt');
-btn.addEventListener('click', handCl);
+// let btn = document.getElementById('bt');
+// btn.addEventListener('click', handCl);
 function handCl() {
     renderList();
     gettingChart();
+
+
 }
 
 //render images
@@ -106,27 +113,27 @@ function renderThreeImages() {
     leftIndex1 = leftIndex;
     rightIndex1 = rightIndex;
     midIndex1 = midIndex;
-    console.log(leftIndex1 + 'i1');
-    console.log(rightIndex1 + 'i1');
-    console.log(midIndex1 + 'i1');
+    // console.log(leftIndex1 + 'i1');
+    // console.log(rightIndex1 + 'i1');
+    // console.log(midIndex1 + 'i1');
     leftIndex = generateRandomIndex();
     rightIndex = generateRandomIndex();
     midIndex = generateRandomIndex();
-    console.log(leftIndex);
-    console.log(rightIndex);
-    console.log(midIndex);
+    // console.log(leftIndex);
+    // console.log(rightIndex);
+    // console.log(midIndex);
     // while (leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
     //     leftIndex = generateRandomIndex();
     //     rightIndex = generateRandomIndex();
     // }
-    console.log("befor");
+    // console.log("befor");
     let indexes = [leftIndex, rightIndex, midIndex];
     let pIndexes = [leftIndex1, rightIndex1, midIndex1];
 
     // if (counter !== 0) {
-    console.log("beforwh");
+    // console.log("beforwh");
     while (intersection(indexes, pIndexes).length !== 0 || leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
-        console.log("inwh");
+        // console.log("inwh");
         leftIndex = generateRandomIndex();
         rightIndex = generateRandomIndex();
         midIndex = generateRandomIndex();
@@ -139,7 +146,7 @@ function renderThreeImages() {
     //     leftIndex = generateRandomIndex();
     //     rightIndex = generateRandomIndex();
     // }
-    console.log('after if');
+    // console.log('after if');
     leftImage.src = Product.all[leftIndex].source;
     rightImage.src = Product.all[rightIndex].source;
     midImage.src = Product.all[midIndex].source;
@@ -160,9 +167,7 @@ function generateRandomIndex() {
 
 /////////////
 function intersection(a, b) {
-    console.log(a);
-    console.log(b);
-    console.log('insidef');
+
     let result = [];
 
     for (let i = 0; i < a.length; i++) {
@@ -172,7 +177,7 @@ function intersection(a, b) {
             }
         }
     }
-    console.log(result + 'res');
+
     return result;
 }
 /////////////////
@@ -202,3 +207,29 @@ function gettingChart() {
         },
     })
 }
+
+///////
+function saveToLs() {
+
+
+    const convertedArr = JSON.stringify(Product.all);
+
+    localStorage.setItem('objects', convertedArr);
+
+}
+function getFromLs() {
+    const data = localStorage.getItem('objects');
+    console.log(data);
+
+    const parsedOrder = JSON.parse(data);
+    console.log(parsedOrder);
+    if (parsedOrder) {
+
+
+        Product.all = parsedOrder;
+
+
+    }
+
+}
+getFromLs();
