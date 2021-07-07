@@ -9,6 +9,8 @@ let counter = 0;
 let allName = [];
 let allVote = [];
 let allShown = [];
+
+
 function Product(name, source) {
     this.name = name;
     this.source = source;
@@ -19,7 +21,7 @@ function Product(name, source) {
 }
 Product.all = [];
 
-
+//images
 new Product('bag', 'images/bag.jpg');
 new Product('banana', 'images/banana.jpg');
 new Product('bathroom', 'images/bathroom.jpg');
@@ -47,6 +49,7 @@ let midIndex = 0;
 let leftIndex1;
 let rightIndex1;
 let midIndex1;
+///clickphoto
 parent.addEventListener('click', handleClick);
 let btn;
 function handleClick(event) {
@@ -83,6 +86,7 @@ function handleClick(event) {
 
 
 }
+//listShow
 let li;
 function renderList() {
     const ul = document.getElementById('unList');
@@ -99,8 +103,7 @@ function renderList() {
 }
 
 
-// let btn = document.getElementById('bt');
-// btn.addEventListener('click', handCl);
+//button
 function handCl() {
     renderList();
     gettingChart();
@@ -113,40 +116,19 @@ function renderThreeImages() {
     leftIndex1 = leftIndex;
     rightIndex1 = rightIndex;
     midIndex1 = midIndex;
-    // console.log(leftIndex1 + 'i1');
-    // console.log(rightIndex1 + 'i1');
-    // console.log(midIndex1 + 'i1');
+    
     leftIndex = generateRandomIndex();
     rightIndex = generateRandomIndex();
     midIndex = generateRandomIndex();
-    // console.log(leftIndex);
-    // console.log(rightIndex);
-    // console.log(midIndex);
-    // while (leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
-    //     leftIndex = generateRandomIndex();
-    //     rightIndex = generateRandomIndex();
-    // }
-    // console.log("befor");
-    let indexes = [leftIndex, rightIndex, midIndex];
+        let indexes = [leftIndex, rightIndex, midIndex];
     let pIndexes = [leftIndex1, rightIndex1, midIndex1];
-
-    // if (counter !== 0) {
-    // console.log("beforwh");
     while (intersection(indexes, pIndexes).length !== 0 || leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
-        // console.log("inwh");
         leftIndex = generateRandomIndex();
         rightIndex = generateRandomIndex();
         midIndex = generateRandomIndex();
         indexes = [leftIndex, rightIndex, midIndex];
-        // }
-        // console.log(intersection(indexes, pIndexes));
     }
 
-    // while (leftIndex === rightIndex || leftIndex === midIndex || rightIndex === midIndex) {
-    //     leftIndex = generateRandomIndex();
-    //     rightIndex = generateRandomIndex();
-    // }
-    // console.log('after if');
     leftImage.src = Product.all[leftIndex].source;
     rightImage.src = Product.all[rightIndex].source;
     midImage.src = Product.all[midIndex].source;
@@ -180,7 +162,7 @@ function intersection(a, b) {
 
     return result;
 }
-/////////////////
+/////////////////chartJs
 function gettingChart() {
     let ctx = document.getElementById('myChart')
     let myChart = new Chart(ctx, {
@@ -208,7 +190,7 @@ function gettingChart() {
     })
 }
 
-///////
+///////localStorage
 function saveToLs() {
 
 

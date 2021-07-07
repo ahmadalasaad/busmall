@@ -1,6 +1,60 @@
-img{
-    display: inline-block;
-    width: 20%;
-    height: 300px;
-    margin: 30px;
+*{
+    box-sizing: border-box;
 }
+
+body{
+    padding: 10px;
+    margin: auto;
+    background-color: gainsboro;
+}
+
+header{
+    background-color: lightpink;
+    padding: 30px;
+    margin: auto;
+}
+header h1 {
+    display:inline-block;
+    border-radius: 20%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
+    background-color: linen;
+    font-size: 50px;
+}
+
+h2{
+    color: mintcream;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: navy;
+    display: inline-block;
+    margin-left: 40%;
+}
+#sec-one{
+    display: block;
+    width: 70%;
+    background-color: lightpink;
+    margin: 30px 0px 50px 180px ;
+}
+#sec-one img { 
+    display: inline-block;
+    margin: 22px;
+    width: 300px;
+    height: 300px; ;    
+}
+#sec-two{
+    /* position: absolute;
+    top: 2%;
+    right: 5%; */
+    background-color: lightpink;
+    font-size: 20px;
+    float: right;
+    margin-top: 30px;
+
+}
+div{
+
+    display: inline-block;
+    width: 50%;
+    float: left;
+   }
+    
